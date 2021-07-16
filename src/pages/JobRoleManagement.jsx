@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Button, FormField,Table,Icon, TableCell } from "semantic-ui-react";
+import { Button, FormField,Table,Icon, TableCell,Header } from "semantic-ui-react";
 import * as Yup from "yup";
 import JobRoleService from "../services/jobRoleService";
 import FrmTextInput from "../utilities/customFormControls/FrmTextInput";
@@ -35,6 +35,8 @@ export default function JobRoleManagement() {
         >
           Çalışma Pozisyonlarını Düzenle
         </p>
+        <div className="roleAddDivTheme">
+          <Header as='h3' icon='search plus' content='Çalışma Pozisyonu Ekle' />
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -55,10 +57,14 @@ export default function JobRoleManagement() {
             Ekle
           </Button>
         </Form>
-      </Formik>
+      </Formik></div>
       <Table celled>
           <Table.Header>
             <Table.Row>
+            <Table.HeaderCell>
+                <Icon name="building outline" size="big" />
+                Rol Id
+              </Table.HeaderCell>
               <Table.HeaderCell>
                 <Icon name="building outline" size="big" />
                 Mevcut Çalışma Pozisyonları
@@ -71,7 +77,8 @@ export default function JobRoleManagement() {
           </Table.Header>
           <Table.Body>
             {JobRoles.map((role) => (
-              <Table.Row key={role.roleId}>
+              <Table.Row key={role.id}>
+                <Table.Cell>{role.id}</Table.Cell>
                 <Table.Cell>{role.roleName}</Table.Cell>
                 <Table.Cell>{<Button color="red" onClick={()=>rolSil(role.id)}>Sil</Button>}</Table.Cell>
               </Table.Row>

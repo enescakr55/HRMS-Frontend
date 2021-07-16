@@ -14,7 +14,6 @@ export default class Flow extends Component {
         <Popup
           trigger={
             <Menu.Item
-              
               name="main"
               as={NavLink}
               to="/main"
@@ -58,7 +57,24 @@ export default class Flow extends Component {
           content="İş Arayanlar"
           position="right center"
         />
-                <Popup
+
+        <Popup
+          trigger={
+            <Menu.Item
+              name="jobs"
+              as={NavLink}
+              to="/jobs"
+              active={activeItem === "/jobs"}
+              onClick={this.flowItemClick}
+            >
+              <Icon name="list alternate outline" size="big"></Icon>
+            </Menu.Item>
+          }
+          content="İş İlanları"
+          position="right center"
+        />
+
+        <Popup
           trigger={
             <Menu.Item
               name="jobrolemanagement"
