@@ -29,7 +29,7 @@ export default function JobAdvertList() {
     setpageCount(Math.ceil(jobadverts.length / perPageObject));
   }
   function perPageChange(p) {
-    if (p == 10 || p == 20 || p == 50) {
+    if (p == 10 || p == 20 || p == 50 ||p == 100) {
       setPerPageObject(p);
       var getDatas = jobAdvertService.getJobAdverts();
       getDatas.then((result) => {

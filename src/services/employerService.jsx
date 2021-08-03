@@ -5,9 +5,9 @@ export default class EmployerService {
         return axios.get(EnvironmentUrl.siteAddress()+"employers/getall");
     }
     addEmployer(employer){
-        return axios.post(EnvironmentUrl.siteAddress+"employers/add",employer)
+        return axios.post(EnvironmentUrl.siteAddress()+"employers/add",employer)
     }
     registerEmployer(employerRegister){
-        return axios.post(EnvironmentUrl.siteAddress+"employers/registeremployer",employerRegister);
+        return axios.post(EnvironmentUrl.siteAddress()+"employers/registeremployer",employerRegister);
     }
 }

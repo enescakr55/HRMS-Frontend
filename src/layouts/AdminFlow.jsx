@@ -46,16 +46,16 @@ export default class AdminFlow extends Component {
         <Popup
           trigger={
             <Menu.Item
-              name="jobseekers"
+              name="jobadvertadd"
               as={NavLink}
-              to="/jobseekers"
-              active={activeItem === "/jobseekers"}
+              to="/jobadvertadd"
+              active={activeItem === "/jobadvertadd"}
               onClick={this.flowItemClick}
             >
               <Icon name="users" size="big"></Icon>
             </Menu.Item>
           }
-          content="İş Arayanlar"
+          content="İş İlanı Ekle"
           position="right center"
         />
       </Menu>

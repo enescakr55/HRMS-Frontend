@@ -7,6 +7,7 @@ export default function FrmTextInput({...props}) {
     return (
         <div>
       <FormField error={meta.touched && !!meta.error}>
+        <label>{props.placeholder}</label>
         <input {...field} {...props}/>
         {meta.touched && !!meta.error ? (
             <Label pointing basic color="red" content={meta.error}></Label>

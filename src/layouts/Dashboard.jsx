@@ -12,11 +12,12 @@ import JobseekerList from "../pages/JobseekerList";
 import JobRoleManagement from "../pages/JobRoleManagement";
 import JobAdvertList from "../pages/JobAdvertList";
 import EmployerSignUpPage from "../pages/EmployerSignUpPage";
+import JobAdvertAdd from "../pages/JobAdvertAdd";
 export default function Dashboard() {
   const location = useLocation();
   console.log(location.pathname);
   const usersFlow = ["/employers","/jobseekers","/","/main","/jobs"]; 
-  const adminFlow = ["/jobrolemanagement"];
+  const adminFlow = ["/jobrolemanagement","/jobadvertadd"];
   const usersFlowLength = usersFlow.filter(p=>p==location.pathname).length;
   const adminFlowLength = adminFlow.filter(p=>p==location.pathname).length;
   return (
@@ -41,6 +42,7 @@ export default function Dashboard() {
             <Route exact path="/jobseekers"><JobseekerList></JobseekerList></Route>
             <Route exact path="/jobrolemanagement"><JobRoleManagement></JobRoleManagement></Route>
             <Route exact path="/jobs"><JobAdvertList></JobAdvertList></Route>
+            <Route exact path="/jobadvertadd"><JobAdvertAdd></JobAdvertAdd></Route>
           </Grid.Column>
 
         </Grid.Row>
