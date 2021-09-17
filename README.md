@@ -3,6 +3,7 @@
 Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
 ### Proje Özellikleri
+** asd
 
 - asd
 
