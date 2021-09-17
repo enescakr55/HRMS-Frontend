@@ -1,4 +1,4 @@
-<h1>İş Kaşifi | React ile yazılmış iş ve işçi bulma projesi</h1>
+<h1>İş Kaşifi | React - Java ile yazılmış iş ve işçi bulma projesi</h1>
 
 Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
