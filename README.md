@@ -1,4 +1,4 @@
-<h1>REACT ile yazılmış iş bulma projesi</h1>
+<h1>REACT ile yazılmış iş - işçi bulma projesi</h1>
 
 Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
