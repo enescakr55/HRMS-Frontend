@@ -2,10 +2,15 @@
 
 Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
-### Proje Özellikleri
-** asd
+### Proje Tanıtımı ve Özellikleri
 
-- asd
+- Projenin frontend kısmı React ile backend kısmı ise Java ile yazılmıştır.
+
+
+
+
+
+
 
 <h3>İş İlanı Listeleme Sayfası</h3>
 
