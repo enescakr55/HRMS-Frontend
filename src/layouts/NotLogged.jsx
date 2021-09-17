@@ -6,7 +6,7 @@ export default function NotLogged() {
     <div>
       <Button.Group>
         <Button as={NavLink} to="/sign-in">Giriş Yap</Button>
-        <Button.Or text="or"></Button.Or>
+        <Button.Or text=""></Button.Or>
         <Button as={NavLink} to="/sign-up" positive>Üye Ol</Button>
       </Button.Group>
     </div>

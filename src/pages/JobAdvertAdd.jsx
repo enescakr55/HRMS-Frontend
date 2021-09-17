@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
 import React,{useEffect,useState} from "react";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import CityService from "../services/cityService";
 import EmployerService from "../services/employerService";
@@ -65,8 +66,8 @@ export default function JobAdvertAdd() {
     jobTypeId: ""
   };
   let schema = Yup.object({
-    maxSalary: Yup.number().required("Bu öğe boş bırakılamaz"),
-    minSalary: Yup.number().required("Bu öğe boş bırakılamaz"),
+    maxSalary: Yup.number(),
+    minSalary: Yup.number(),
     openPositionNumber: Yup.number().required("Bu öğe boş bırakılamaz"),
     description: Yup.string().required("Bu öğe boş bırakılamaz"),
   });
@@ -79,7 +80,8 @@ export default function JobAdvertAdd() {
         onSubmit={(values) => {
           console.log(values);
           console.log("result");
-          jobAdvertService.addJobAdvert(values).then((result,q)=>{console.log(result)
+          jobAdvertService.addJobAdvert(values).then((result,q)=>{
+            result.data.success == true ? toast.success("İş ilanı eklendi") : toast.error("İş ilanı eklenemedi");
         });
         }}
       >

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Grid, Menu, Segment, Icon, Button, Popup } from "semantic-ui-react";
+import {Menu, Icon, Popup } from "semantic-ui-react";
 
 export default class AdminFlow extends Component {
   state = { activeItem: "/" };
@@ -56,6 +56,21 @@ export default class AdminFlow extends Component {
             </Menu.Item>
           }
           content="İş İlanı Ekle"
+          position="right center"
+        />
+                <Popup
+          trigger={
+            <Menu.Item
+              name="jobadvertapprove"
+              as={NavLink}
+              to="/jobadvertapprove"
+              active={activeItem === "/jobadvertapprove"}
+              onClick={this.flowItemClick}
+            >
+              <Icon name="angle right" size="big"></Icon>
+            </Menu.Item>
+          }
+          content="Onay Bekleyen İlanlar"
           position="right center"
         />
       </Menu>

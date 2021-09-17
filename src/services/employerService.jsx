@@ -10,4 +10,7 @@ export default class EmployerService {
     registerEmployer(employerRegister){
         return axios.post(EnvironmentUrl.siteAddress()+"employers/registeremployer",employerRegister);
     }
+    activeAccount(employer){
+        return axios.post();
+    }
 }

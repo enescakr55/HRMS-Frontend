@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Grid, Menu, Segment, Icon, Button, Popup } from "semantic-ui-react";
+import { Menu, Icon, Popup } from "semantic-ui-react";
 
 export default class Flow extends Component {
   state = { activeItem: "/" };
@@ -86,7 +86,7 @@ export default class Flow extends Component {
               <Icon name="angle double right" size="big"></Icon>
             </Menu.Item>
           }
-          content="Yönetim Paneli"
+          content="Yönetim Menüsü"
           position="right center"
         />
       </Menu>

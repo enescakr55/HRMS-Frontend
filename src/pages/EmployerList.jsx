@@ -13,9 +13,7 @@ export default function EmployerList() {
       .then((result) => setEmployers(result.data.data));
   }, []);
   console.log(employers);
-  function filter(){
-  
-  }
+
   return (
     <div>
       <div className="employersMainDiv" style={{}}>
@@ -30,7 +28,6 @@ export default function EmployerList() {
         >
           Şirketler
         </p>
-        <Button onClick={()=>filter()}>Filtrele</Button>
         <Table celled>
           <Table.Header>
             <Table.Row>

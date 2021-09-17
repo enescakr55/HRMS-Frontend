@@ -27,7 +27,17 @@ export default function EmployerSignUpPage() {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h2>İşveren Olarak Üye Ol</h2>
+      <p
+          style={{
+            fontFamily: "sans-serif",
+            borderBottom: "2px solid #2185d0",
+            fontSize: "20px",
+            fontWeight: "bold",
+            color:"#2185d0"
+          }}
+        >
+          Şirket Hesabı Oluştur
+        </p>
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
