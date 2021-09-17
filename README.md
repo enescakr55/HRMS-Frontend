@@ -4,7 +4,7 @@ Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
 ### Proje Tanıtımı
 
-- Projenin frontend kısmı React ile backend kısmı ise Java ile yazılmıştır.
+- Projenin frontend kısmı React - Javascript ile backend kısmı ise Java ile yazılmıştır.
 - Proje katmanlı mimariler ile hazırlanmıştır bu nedenle proje üzerinde düzenlemeler rahatlıkla yapılabilir.
 - Backend kısmında Spring Boot - Spring Security - Json Web Tokens kullanılmıştır.
 - Frontend kısmında Semantic UI - Redux - Toastify - Axios - Formik - Yup paketleri kullanılmıştır.
@@ -18,16 +18,18 @@ Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 - Şirketler - İş ilanları - İş arayan kullanıcılar listelenebilir.
 - Yetkili kullanıcılar sisteme yeni çalışma pozisyonları ekleyebilir.
 - Yetki ve Rol bazlı yetkilendirme sistemde mevcuttur.
--  Eğer kullanılmak istenirse kullanıcıların  sisteme fotoğraf ekleyebilmesi altyapısı sistemde mevcuttur (Cloudinary üzerinden).
+- Eğer kullanılmak istenirse kullanıcıların  sisteme fotoğraf ekleyebilmesi altyapısı sistemde mevcuttur (Cloudinary üzerinden).
 - Eğer kullanılmak istenirse SMTP ile doğrulama maili gönderilmesinin altyapısı sistemde mevcuttur.
 
-**Bu belge 18.09.2021 - 00.18 tarihinde oluşturulmuştur. Proje geliştirilmektedir bu belge güncel olmayabilir.**
+**NOT : Site yapım aşamasındadır bazı özellikler stabil olmayabilir.**
 
+### Eklenmesi Planlanan Özellikler
 
+- Sistem üzerinden iş ilanlarına başvurulması.
+- Anasayfada kişiye özel öneriler getirilmesi.
+- Site tasarımının mobil uyumluluğunun artırılması.
 
-
-
-
+**Bu belge 18.09.2021 tarihinde oluşturulmuştur. Proje geliştirilmektedir bu belge güncel olmayabilir.**
 
 
 <h3>İş İlanı Listeleme Sayfası</h3>
