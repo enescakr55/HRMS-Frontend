@@ -15,7 +15,7 @@ Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 - Yalnızca şirket olarak kayıt olan kullanıcılar iş ilanı ekleyebilir.
 - İş ilanı eklendikten sonra listelenmesi için yetkili onayı gerekir.
 - Kullanıcılar ilanları favorilerine ekleyebilir.
-- Şirketler - İş ilanları ve İş arayan kullanıcılar listelenebilir.
+- Şirketler - İş ilanları - İş arayan kullanıcılar listelenebilir.
 - Yetkili kullanıcılar sisteme yeni çalışma pozisyonları ekleyebilir.
 - Yetki ve Rol bazlı yetkilendirme sistemde mevcuttur.
 -  Eğer kullanılmak istenirse kullanıcıların  sisteme fotoğraf ekleyebilmesi altyapısı sistemde mevcuttur (Cloudinary üzerinden).
