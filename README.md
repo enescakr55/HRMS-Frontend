@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+<h1>İş Kaşifi | React - Java ile yazılmış iş ve işçi bulma projesi</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 
-## Available Scripts
+### Proje Tanıtımı
 
-In the project directory, you can run:
+- Projenin frontend kısmı React - Javascript ile backend kısmı ise Java ile yazılmıştır.
+- Proje katmanlı mimariler ile hazırlanmıştır bu nedenle proje üzerinde düzenlemeler rahatlıkla yapılabilir.
+- Backend kısmında Spring Boot - Spring Security - Json Web Tokens kullanılmıştır.
+- Frontend kısmında Semantic UI - Redux - Toastify - Axios - Formik - Yup paketleri kullanılmıştır.
 
-### `npm start`
+### Mevcut Proje Özellikleri
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Kullanıcılar İş arayan ve Şirket olarak kayıt olabilirler.
+- Yalnızca şirket olarak kayıt olan kullanıcılar iş ilanı ekleyebilir.
+- İş ilanı eklendikten sonra listelenmesi için yetkili onayı gerekir.
+- Kullanıcılar ilanları favorilerine ekleyebilir.
+- Şirketler - İş ilanları - İş arayan kullanıcılar listelenebilir.
+- Yetkili kullanıcılar sisteme yeni çalışma pozisyonları ekleyebilir.
+- Yetki ve Rol bazlı yetkilendirme sistemde mevcuttur.
+- Eğer kullanılmak istenirse kullanıcıların  sisteme fotoğraf ekleyebilmesi altyapısı sistemde mevcuttur (Cloudinary üzerinden).
+- Eğer kullanılmak istenirse SMTP ile doğrulama maili gönderilmesinin altyapısı sistemde mevcuttur.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**NOT : Site yapım aşamasındadır bazı özellikler stabil olmayabilir.**
 
-### `npm test`
+### Eklenmesi Planlanan Özellikler
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sistem üzerinden iş ilanlarına başvurulması.
+- Anasayfada kişiye özel öneriler getirilmesi.
+- Site tasarımının mobil uyumluluğunun artırılması.
 
-### `npm run build`
+**Bu belge 18.09.2021 tarihinde oluşturulmuştur. Proje geliştirilmektedir bu belge güncel olmayabilir.**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h3>İş İlanı Listeleme Sayfası</h3>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![1](https://raw.githubusercontent.com/enescakr55/HRMS-Frontend/master/OrnekResimler/jobadvert-list.png)
 
-### `npm run eject`
+<h3>Giriş Sayfası</h3>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![1](https://raw.githubusercontent.com/enescakr55/HRMS-Frontend/master/OrnekResimler/sign-in.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3>Üyelik Sayfası</h3>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![1](https://raw.githubusercontent.com/enescakr55/HRMS-Frontend/master/OrnekResimler/sign-up.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<h3>Admin | İlan Onaylama Sayfası</h3>
 
-## Learn More
+![1](https://raw.githubusercontent.com/enescakr55/HRMS-Frontend/master/OrnekResimler/job-approve-adminPage.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h3>Admin | İş Pozisyonları Listeleme Ve Düzenleme</h3>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![1](https://github.com/enescakr55/HRMS-Frontend/blob/master/OrnekResimler/job-roles-adminPage.png)
 
-### Code Splitting
+<h3>Admin | İş İlanı Ekleme Sayfası</h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![1](https://github.com/enescakr55/HRMS-Frontend/blob/master/OrnekResimler/add-job-advert-adminPage.png) 
