@@ -60,3 +60,20 @@
 .mobileListMainClass {
   align-items: center;
 }
+.ppuploaddiv {
+  display: none;
+  color:white;
+}
+.editppdiv:hover + .ppuploaddiv {
+  display:block;
+}
+.titleFont {
+  font-weight: bold;
+  font-size: 18px;
+  color:#2185d0;
+}
+.normalFont{
+  color:black;
+  font-size: 18px;
+  font-weight: bold;
+}

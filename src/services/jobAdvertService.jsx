@@ -8,6 +8,9 @@ export default class JobAdvertService {
     addJobAdvert(jobadvert){
         return axios.post(EnvironmentUrl.siteAddress()+"jobadverts/addwithdto",jobadvert);
     }
+    addJobAdvertByEmployer(jobadvert){
+        return axios.post(EnvironmentUrl.siteAddress()+"jobadverts/addjobadvertbyemployer",jobadvert);
+    }
     getIfNotActive(){
         return axios.get(EnvironmentUrl.siteAddress()+"jobadverts/getisnotactive");
     }
@@ -28,6 +31,9 @@ export default class JobAdvertService {
     }
     getMyJobAdverts(){
         return axios.get(EnvironmentUrl.siteAddress()+"jobadverts/getmyjobadverts");
+    }
+    getJobApplyCount(jobAdvert){
+        return axios.post(EnvironmentUrl.siteAddress()+"jobapplies/getjobapplycountbyjobadvert",jobAdvert);
     }
     
 }

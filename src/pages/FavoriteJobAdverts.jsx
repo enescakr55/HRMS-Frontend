@@ -1,76 +1,221 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Card, Container, Button, Icon } from "semantic-ui-react";
+import {
+  Table,
+  Button,
+  Icon,
+  Pagination,
+  Dropdown,
+  Grid,
+  Segment,
+  Label,
+  Divider,
+} from "semantic-ui-react";
 import JobAdvertService from "../services/jobAdvertService";
+import JobApplyService from "../services/jobApplyService";
 
 export default function FavoriteJobAdverts() {
+  
   let jobAdvertService = new JobAdvertService();
-  const [favoriteJobAdverts, setFavoriteJobAdverts] = useState([]);
-  function getFavoriteJobAdverts() {
-    jobAdvertService.getFavorites().then((result) => {
-      setFavoriteJobAdverts(result.data.data);
+  const account = useSelector((state) => state.account);
+  const [jobadverts, setJobadverts] = useState([]);
+  const [filteredJobAdverts, setfilteredJobAdverts] = useState([]);
+  const [pageCount, setpageCount] = useState(0);
+  const [activePage, setActivePage] = useState(1);
+  const [perPageObject, setPerPageObject] = useState(10);
+  const [favorites, setFavorites] = useState([]);
+  useEffect(() => {
+    var getDatas = jobAdvertService.getFavorites();
+    getDatas.then((result) => {
+      setJobadverts(result.data.data);
+      setpageCount(Math.ceil(result.data.data.length / perPageObject));
+      setfilteredJobAdverts(result.data.data.slice(0, perPageObject));
+      console.log(result.data.data);
+    });
+  }, []);
+  function favGuncelle() {
+    var fav = jobAdvertService.getFavorites();
+    fav.then((result) => {
+      setFavorites(result.data.data);
+      console.log("Favoriler");
+      console.log(result.data.data);
     });
   }
-
   useEffect(() => {
-    getFavoriteJobAdverts();
+    favGuncelle();
   }, []);
-  function removeFavorite(id){
-    jobAdvertService.removeFavorite(id).then((result)=>{
-      if(result.data.success){
-        toast.success("İlan favorilerinizden kaldırıldı");
-        getFavoriteJobAdverts();
+  function addFavorites(advertid) {
+    jobAdvertService.addFavorite(advertid).then((result) => {
+      if (result.data.success) {
+        toast.success(result.data.message);
+        favGuncelle();
+      } else {
+        toast.error("İşlem başarısız");
       }
+    });
+  }
+  function removeFavorites(advertid) {
+    jobAdvertService.removeFavorite(advertid).then((result) => {
+      if (result.data.success) {
+        toast.success(result.data.message);
+        favGuncelle();
+      } else {
+        toast.error("İşlem başarısız");
+      }
+    });
+  }
+  const options = [
+    { key: 1, text: "10", value: 10 },
+    { key: 2, text: "20", value: 20 },
+    { key: 3, text: "50", value: 50 },
+    { key: 4, text: "100", value: 100 },
+  ];
+  function findPageCount() {
+    setpageCount(Math.ceil(jobadverts.length / perPageObject));
+  }
+  function perPageChange(p) {
+    if (p == 10 || p == 20 || p == 50 || p == 100) {
+      setPerPageObject(p);
+      var getDatas = jobAdvertService.getFavorites();
+      getDatas.then((result) => {
+        setJobadverts(result.data.data);
+        setpageCount(Math.ceil(result.data.data.length / p));
+        setfilteredJobAdverts(result.data.data.slice(0, p));
+        setActivePage(1);
+      });
+    }
+  }
+
+  function changeActivePage(page) {
+    setActivePage(page);
+    if (jobadverts.length > 0) {
+      setfilteredJobAdverts(
+        jobadverts.slice(
+          (page - 1) * perPageObject,
+          (page - 1) * perPageObject + perPageObject
+        )
+      );
+    }
+  }
+  function filter() {}
+  function show() {
+    console.log(jobadverts);
+    console.log(activePage);
+    console.log(pageCount);
+  }
+  function applyJob(jobAdvert){
+    let jobApplyService = new JobApplyService;
+    jobApplyService.applyJob(jobAdvert).then(p=>{
+      if(p.data.success){
+        toast.success(p.data.message);
+      }else{
+        toast.error(p.data.message);
+      }
+    },(error)=>{
+      toast.error("Başvuru yapılamadı");
     })
   }
   return (
     <div>
-      <Container>
-      <p
-          style={{
-            fontFamily: "sans-serif",
-            borderBottom: "2px solid #2185d0",
-            fontSize: "20px",
-            fontWeight: "bold",
-            color:"#2185d0"
-          }}
-        >
-          Favori İlanlarınız
-        </p>
-        <Card.Group>
-          {favoriteJobAdverts.map((j) => (
-            <Card key={j.jobAdvert.advertId}>
-              <Card.Content>
-                <Card.Header>{j.jobAdvert.employer.companyName}</Card.Header>
-                <Card.Meta>{j.jobAdvert.role.roleName}</Card.Meta>
-                <Card.Description>
-                  <strong> Çalışma Zamanı : </strong> {j.jobAdvert.jobTime.jobTimeName}
-                  <br />
-                  <strong> Çalışma Şekli : </strong> {j.jobAdvert.jobType.jobTypeName}
-                  <br />
-                  <strong> Çalışma Yeri : </strong> {j.jobAdvert.city.cityName}
-                  <br />
-                  <strong> Ücret Aralığı : </strong> {j.jobAdvert.minSalary} -{j.jobAdvert.maxSalary}
-                  {j.maxSalary}
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <div className="ui two buttons">
-                  <Button
-                    color="blue"
-                    onClick={() => removeFavorite(j.jobAdvert.advertId)}
-                  >
-                    <Icon name="star outline" color="yellow"></Icon> Favorilerden Kaldır
-                  </Button>
-                  <Button color="green">
-                    <Icon name="mouse pointer"></Icon> Başvur
-                  </Button>
+       <Grid>
+        <Grid.Row style={{ justifyContent: "center" }}>
+          {filteredJobAdverts.map((j) => (
+           
+            <div className="ListClass" key={j.jobAdvert.advertId}>
+              {account.logged && (
+                <div>
+                  {favorites.filter((p) => p.jobAdvert.advertId == j.jobAdvert.advertId)
+                    .length > 0 ? (
+                    <Label
+                      onClick={() => removeFavorites(j.jobAdvert.advertId)}
+                      color="black"
+                      style={{ float: "right", cursor: "pointer" }}
+                    >
+                      <Icon name="star"></Icon>Favorilerden kaldır
+                    </Label>
+                  ) : (
+                    <Label
+                      onClick={() => addFavorites(j.jobAdvert.advertId)}
+                      color="black"
+                      style={{ float: "right", cursor: "pointer" }}
+                    >
+                      <Icon name="star"></Icon>Favorilere Ekle
+                    </Label>
+                  )}
                 </div>
-              </Card.Content>
-            </Card>
+              )}
+              <h3 style={{ margin: "0px" }}>
+                <Icon name="building"></Icon>
+                {j.jobAdvert.employer.companyName}
+              </h3>
+              <font style={{ color: "gray" }}>{j.jobAdvert.role.roleName}</font>
+              <br></br>
+              <br></br>
+              <p style={{ margin: "0px" }}>
+                <strong>Şehir : </strong>
+                {j.jobAdvert.city.cityName}
+              </p>
+              <p style={{ margin: "0px" }}>
+                <strong>Açıklama : </strong>
+                {j.jobAdvert.description}
+              </p>
+              <p>
+                <strong>Maaş Aralığı :</strong>
+                {j.jobAdvert.minSalary} - {j.jobAdvert.maxSalary}
+              </p>
+              <Label as="a" basic color="red">
+                {j.jobAdvert.jobTime.jobTimeName}
+              </Label>
+              <Label as="a" basic color="green">
+                {j.jobAdvert.jobType.jobTypeName}
+              </Label>
+              <br></br>
+
+              {account.logged && (
+                <Button
+                  color="facebook"
+                  style={{ marginTop: "10px", height: "37px" }}
+                  onClick={() => applyJob(j.jobAdvert)}
+                >
+                  <Icon name="mouse pointer" ></Icon>Başvur
+                </Button>
+              )}
+            </div>
           ))}
-        </Card.Group>
-      </Container>
+        </Grid.Row>
+        <Grid.Row>
+          {" "}
+          <div
+            style={{
+              fontWeight: "bold",
+              padding: "8px",
+              boxShadow: "#a4a4a4 0px 0px 2px 1px",
+              display: "inline-block",
+              marginRight: "10px",
+            }}
+          >
+            <Icon name="info"></Icon>
+            Favorilerinizde {jobadverts.length} iş ilanı mevcut.
+          </div>
+          <div style={{ verticalAlign: "middle" }}>
+            <b> Kaç Öğe Görüntülensin </b>
+            <Dropdown
+              style={{ marginRight: "10px", padding: "8px" }}
+              item
+              options={options}
+              defaultValue={10}
+              onChange={(e, data) => perPageChange(data.value)}
+            />
+            <Pagination
+              totalPages={pageCount}
+              activePage={activePage}
+              onPageChange={(e, data) => changeActivePage(data.activePage)}
+            />
+          </div>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 }

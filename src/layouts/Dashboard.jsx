@@ -17,13 +17,21 @@ import JobAdvertApproval from "../pages/JobAdvertApproval";
 import SignUp from "../pages/SignUp";
 import JobseekerSignUpPage from "../pages/JobseekerSignUpPage";
 import FavoriteJobAdverts from "../pages/FavoriteJobAdverts";
+import MyJobAdverts from "../pages/MyJobAdverts";
+import UploadProfileImage from "../pages/UploadProfileImage";
+import BusinessProfileEdit from "../pages/BusinessProfileEdit";
+import AddJobAdvertByEmployer from "../pages/AddJobAdvertByEmployer";
+import AdvertDetails from "../pages/AdvertDetails";
+import UserProfile from "../pages/UserProfile";
 export default function Dashboard() {
-  const location = useLocation();
-  console.log(location.pathname);
-  const usersFlow = ["/employers","/jobseekers","/","/main","/jobs","/favorite-job-adverts"];
-  const adminFlow = ["/jobrolemanagement","/jobadvertadd","/jobadvertapprove"];
-  const usersFlowLength = usersFlow.filter(p=>p==location.pathname).length;
-  const adminFlowLength = adminFlow.filter(p=>p==location.pathname).length;
+  const fulllocation = useLocation();
+  //console.log(location.pathname);
+  const location = fulllocation.pathname.split("/")[1];
+  console.log(location);
+  const usersFlow = ["employers","jobseekers","","main","jobs","favorite-job-adverts","my-job-adverts","user-profile"];
+  const adminFlow = ["jobrolemanagement","jobadvertadd","jobadvertapprove"];
+  const usersFlowLength = usersFlow.filter(p=>p==location).length;
+  const adminFlowLength = adminFlow.filter(p=>p==location).length;
   return (
     
     <div>
@@ -52,6 +60,11 @@ export default function Dashboard() {
             <Route exact path="/employer-sign-up"><EmployerSignUpPage></EmployerSignUpPage></Route>
             <Route exact path="/jobseeker-sign-up"><JobseekerSignUpPage></JobseekerSignUpPage></Route>
             <Route exact path="/favorite-job-adverts"><FavoriteJobAdverts></FavoriteJobAdverts></Route>
+            <Route exact path="/my-job-adverts"><MyJobAdverts></MyJobAdverts></Route>
+            <Route exact path="/business-edit-profile"><BusinessProfileEdit></BusinessProfileEdit></Route>
+            <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
+            <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
+            <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row only="mobile tablet">
@@ -70,6 +83,11 @@ export default function Dashboard() {
             <Route exact path="/employer-sign-up"><EmployerSignUpPage></EmployerSignUpPage></Route>
             <Route exact path="/jobseeker-sign-up"><JobseekerSignUpPage></JobseekerSignUpPage></Route>
             <Route exact path="/favorite-job-adverts"><FavoriteJobAdverts></FavoriteJobAdverts></Route>
+            <Route exact path="/my-job-adverts"><MyJobAdverts></MyJobAdverts></Route>
+            <Route exact path="/business-edit-profile"><BusinessProfileEdit></BusinessProfileEdit></Route>
+            <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
+            <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
+            <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
           </Grid.Column>
         </Grid.Row>
       </Grid>

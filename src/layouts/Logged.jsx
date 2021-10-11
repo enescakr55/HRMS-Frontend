@@ -52,11 +52,11 @@ export default function Logged() {
                 <Icon name="edit" />
                 <span className="text">Profili Düzenle</span>
               </Dropdown.Item>}
-              {userType === "employer" && <Dropdown.Item onClick={()=>toast.info("Çok yakında eklenecek")}>
+              {userType === "employer" && <Dropdown.Item as={NavLink} to="/business-edit-profile">
                 <Icon name="edit" />
                 <span className="text">Şirketi Düzenle</span>
               </Dropdown.Item>}
-              {userType === "employer" && <Dropdown.Item onClick={()=>toast.info("Çok yakında eklenecek")}>
+              {userType === "employer" && <Dropdown.Item as={NavLink} to="/add-jobadvert-by-employer">
                 <Icon name="plus square" />
                 <span className="text">Yeni İlan Oluştur</span>
               </Dropdown.Item>}

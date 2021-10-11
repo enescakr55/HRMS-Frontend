@@ -13,8 +13,10 @@ import {
   Segment,
   Label,
   Divider,
+  Container,
 } from "semantic-ui-react";
 import JobAdvertService from "../services/jobAdvertService";
+import JobApplyService from "../services/jobApplyService";
 
 export default function JobAdvertList() {
   const account = useSelector((state) => state.account);
@@ -104,10 +106,23 @@ export default function JobAdvertList() {
     console.log(activePage);
     console.log(pageCount);
   }
-
+  function applyJob(jobAdvert){
+    let jobApplyService = new JobApplyService;
+    jobApplyService.applyJob(jobAdvert).then(p=>{
+      if(p.data.success){
+        toast.success(p.data.message);
+      }else{
+        toast.error(p.data.message);
+      }
+    },(error)=>{
+      toast.error("Başvuru yapılamadı");
+    })
+  }
   return (
     <div>
+      <h2 style={{borderBottom:"red 3px solid",color:"red"}}>İş İlanları</h2>
       <Grid>
+        
         <Grid.Row style={{ justifyContent: "center" }}>
           {filteredJobAdverts.map((j) => (
             <div className="ListClass" key={j.advertId}>
@@ -149,8 +164,9 @@ export default function JobAdvertList() {
                 {j.description}
               </p>
               <p>
-                <strong>Maaş Aralığı :</strong>
-                {j.minSalary} - {j.maxSalary}
+              {j.minSalary > 0 && j.maxSalary > 0 ? (<font><strong>Maaş Aralığı : </strong>{j.minSalary} - {j.maxSalary}</font>) : ""}
+              {j.minSalary > 0 && j.maxSalary == 0 ? (<font><strong>Minimum Ücret : </strong>{j.minSalary}</font>) : ""}
+              {j.minSalary == 0 && j.maxSalary > 0 ? (<font><strong>Maksimum Ücret : </strong>{j.maxSalary}</font>) : ""}
               </p>
               <Label as="a" basic color="red">
                 {j.jobTime.jobTimeName}
@@ -164,8 +180,9 @@ export default function JobAdvertList() {
                 <Button
                   color="facebook"
                   style={{ marginTop: "10px", height: "37px" }}
+                  onClick={() => applyJob(j)}
                 >
-                  <Icon name="mouse pointer"></Icon>Başvur
+                  <Icon name="mouse pointer" ></Icon>Başvur
                 </Button>
               )}
             </div>
