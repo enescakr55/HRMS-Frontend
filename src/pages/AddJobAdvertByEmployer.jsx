@@ -9,6 +9,7 @@ import JobRoleService from "../services/jobRoleService";
 import JobTimeService from "../services/jobTimeService";
 import JobTypeService from "../services/jobTypeService";
 import SelectboxService from "../services/SelectboxService";
+import FrmDateInput from "../utilities/customFormControls/FrmDateInput";
 import FrmSelectInput from "../utilities/customFormControls/FrmSelectInput";
 import FrmTextInput from "../utilities/customFormControls/FrmTextInput";
 
@@ -56,13 +57,15 @@ export default function AddJobAdvertByEmployer() {
     lastDate: "",
     active: false,
     jobTimeId: "",
-    jobTypeId: ""
+    jobTypeId: "",
+    lastDate:""
   };
   let schema = Yup.object({
     maxSalary: Yup.number(),
     minSalary: Yup.number(),
     openPositionNumber: Yup.number().required("Bu öğe boş bırakılamaz"),
     description: Yup.string().required("Bu öğe boş bırakılamaz"),
+    lastDate:Yup.date().required("Son başvuru tarihi boş olamaz")
   });
   return (
     <div>
@@ -72,7 +75,6 @@ export default function AddJobAdvertByEmployer() {
         validationSchema={schema}
         onSubmit={(values) => {
           console.log(values);
-          console.log("result");
           jobAdvertService.addJobAdvertByEmployer(values).then((result,q)=>{
             result.data.success == true ? toast.success("İş ilanı eklendi.Yetkili onayından sonra listelenecektir.") : toast.error("İş ilanı eklenemedi");
         });
@@ -95,6 +97,8 @@ export default function AddJobAdvertByEmployer() {
             <FrmTextInput name="minSalary"></FrmTextInput><br/>
             <label>Maksimum Ücret</label>
             <FrmTextInput name="maxSalary"></FrmTextInput><br/>
+            <label>Son Başvuru Tarihi</label>
+            <FrmDateInput name="lastDate" type="date"></FrmDateInput><br/>
             <button type="submit">İlanı Ekle</button>
         </Form>
       </Formik>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import CvService from '../services/cvService';
+import UserProfilePicture from './userProfile/UserProfilePicture';
 
 export default function UserProfile() {
    
@@ -16,7 +17,7 @@ export default function UserProfile() {
     return (
         <div>
             <div>
-                {userId}
+                <UserProfilePicture userId={userId}></UserProfilePicture>
             </div>
         </div>
     )
