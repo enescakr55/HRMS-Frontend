@@ -77,3 +77,13 @@
   font-size: 18px;
   font-weight: bold;
 }
+.cvTitleFont{
+  font-size: 15px;
+  font-weight: bold;
+  color:rgb(72, 72, 184);
+}
+.cvFullName {
+  font-size: 20px;
+  font-weight:bold;
+  color: black;
+}

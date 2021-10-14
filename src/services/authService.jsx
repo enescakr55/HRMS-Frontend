@@ -27,5 +27,8 @@ export default class AuthService{
         localStorageService.addItem("token","");
         localStorageService.addItem("expiration",0);
     }
+    me(){
+        return axios.get(EnvironmentUrl.siteAddress()+"auth/me");
+    }
 
 }

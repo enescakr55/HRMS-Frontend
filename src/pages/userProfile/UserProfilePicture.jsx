@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import { Dimmer, Icon,Image, Loader } from 'semantic-ui-react';
+import AuthService from '../../services/authService';
 import ProfilePictureService from '../../services/profilePictureService';
 export default function UserProfilePicture({...props}) {
     const [image, setImage] = useState([]);
     const [profileImage, setProfileImage] = useState([])
     const [dimmerState, setDimmerState] = useState(false);
+    const [currentUser, setCurrentUser] = useState(false);
     const inputFile = useRef(null);
     const openFileSelector = () => {
        inputFile.current.click();
@@ -56,15 +58,26 @@ export default function UserProfilePicture({...props}) {
             setProfileImage( r.data.data.imageUrl)
         })
     }
+    function getMe(){
+        let authService = new AuthService();
+        authService.me().then(r=>{
+            console.log("r datasi");
+            console.log(r.data.data);
+            if(r.data.data != undefined && r.data.data.id == props.userId){
+                setCurrentUser(true);
+            }
+        })
+    }
     useEffect(() => {
+        getMe();
         getProfilePicture();
     }, [])
     return (
         <div style={{display:"inline-block",verticalAlign:"top"}}>
             <div style={{position:"relative",display:"inline-block"}}>
             <img className="editppdiv" src={profileImage} style={{display:"block",maxWidth:"200px",minWidth:"200px",width:"100%",borderRadius:"50%",background:"black",objectFit:"contain",height:"200px"}}/>
-            <div onClick={openFileSelector} className="ppuploaddiv" style={{maxWidth:"200px",width:"100%",left:"50%",top:"50%",transform:"translate(-50%, -50%)",position:"absolute",background:"gray",textAlign:"center",height:"100%",borderRadius:"50%",paddingTop:"30%",opacity:"0.8"}}><Icon style={{zIndex:"2"}}name="camera" size="huge"></Icon><br/><font style={{fontWeight:"bold"}}>Değiştir</font></div>
-            <Dimmer style={{borderRadius:"50%"}} active={dimmerState} ><Loader indeterminate>Fotoğraf Yükleniyor</Loader></Dimmer>
+            {currentUser==true && <div onClick={openFileSelector} className="ppuploaddiv" style={{maxWidth:"200px",width:"100%",left:"50%",top:"50%",transform:"translate(-50%, -50%)",position:"absolute",background:"gray",textAlign:"center",height:"100%",borderRadius:"50%",paddingTop:"30%",opacity:"0.8"}}><Icon style={{zIndex:"2"}}name="camera" size="huge"></Icon><br/><font style={{fontWeight:"bold"}}>Değiştir</font></div>}
+            {currentUser==true &&<Dimmer style={{borderRadius:"50%"}} active={dimmerState} ><Loader indeterminate>Fotoğraf Yükleniyor</Loader></Dimmer> }
             </div><br/>
             <input type='file' id='file' ref={inputFile} style={{display: 'none'}} onChange={onChangeFile.bind(this)}/>
         </div>

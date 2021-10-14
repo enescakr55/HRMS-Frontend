@@ -7,4 +7,7 @@ export default class JobseekerService{
     registerJobseeker(jobseeker){
         return axios.post(EnvironmentUrl.siteAddress()+"jobseekers/registerjobseeker",jobseeker);
     }
+    getJobseekerByUserId(userId){
+        return axios.get(EnvironmentUrl.siteAddress()+"jobseekers/getjobseekerbyuserid?userid="+userId);
+    }
 }
