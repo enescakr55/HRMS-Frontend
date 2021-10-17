@@ -23,12 +23,17 @@ import BusinessProfileEdit from "../pages/BusinessProfileEdit";
 import AddJobAdvertByEmployer from "../pages/AddJobAdvertByEmployer";
 import AdvertDetails from "../pages/AdvertDetails";
 import UserProfile from "../pages/UserProfile";
+import UserProfileEdit from "../pages/UserProfileEdit";
+import UserDescriptionEdit from "../pages/profileEdit/UserDescriptionEdit";
+import UserSchoolEdit from "../pages/profileEdit/UserSchoolEdit";
+import UserLanguageEdit from "../pages/profileEdit/UserLanguageEdit";
+import UserExperienceEdit from "../pages/profileEdit/UserExperienceEdit";
 export default function Dashboard() {
   const fulllocation = useLocation();
   //console.log(location.pathname);
   const location = fulllocation.pathname.split("/")[1];
   console.log(location);
-  const usersFlow = ["employers","jobseekers","","main","jobs","favorite-job-adverts","my-job-adverts","user-profile"];
+  const usersFlow = ["employers","jobseekers","","main","jobs","favorite-job-adverts","my-job-adverts","user-profile","user-profile-edit"];
   const adminFlow = ["jobrolemanagement","jobadvertadd","jobadvertapprove"];
   const usersFlowLength = usersFlow.filter(p=>p==location).length;
   const adminFlowLength = adminFlow.filter(p=>p==location).length;
@@ -65,6 +70,11 @@ export default function Dashboard() {
             <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
             <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
             <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
+            <Route exact path="/user-profile-edit"><UserProfileEdit></UserProfileEdit></Route>
+            <Route exact path="/user-profile-edit/description"><UserDescriptionEdit></UserDescriptionEdit></Route>
+            <Route exact path="/user-profile-edit/school"><UserSchoolEdit></UserSchoolEdit></Route>
+            <Route exact path="/user-profile-edit/language"><UserLanguageEdit></UserLanguageEdit></Route>
+            <Route exact path="/user-profile-edit/experience"><UserExperienceEdit></UserExperienceEdit></Route>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row only="mobile tablet">
@@ -88,6 +98,11 @@ export default function Dashboard() {
             <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
             <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
             <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
+            <Route exact path="/user-profile-edit"><UserProfileEdit></UserProfileEdit></Route>
+            <Route exact path="/user-profile-edit/description"><UserDescriptionEdit></UserDescriptionEdit></Route>
+            <Route exact path="/user-profile-edit/school"><UserSchoolEdit></UserSchoolEdit></Route>
+            <Route exact path="/user-profile-edit/language"><UserLanguageEdit></UserLanguageEdit></Route>
+            <Route exact path="/user-profile-edit/experience"><UserExperienceEdit></UserExperienceEdit></Route>
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -15,6 +15,7 @@ export default function JobseekerSignUpPage() {
     lastName: "",
     tcNo: "",
     birthYear: "",
+    phoneNumber:"",
   };
   let schema = Yup.object({
     email: Yup.string()
@@ -73,6 +74,7 @@ export default function JobseekerSignUpPage() {
               <FrmTextInput name="password" placeholder="Şifre" type="password"></FrmTextInput><br/>
               <FrmTextInput name="tcNo" placeholder="TC No"></FrmTextInput><br/>
               <FrmTextInput name="birthYear" placeholder="Doğum Yılınız"></FrmTextInput><br/>
+              <FrmTextInput name="phoneNumber" placeholder="Telefon Numaranız"></FrmTextInput><br/>
               <Button type="submit">Üye Ol</Button>
 
         </Form>

@@ -11,4 +11,7 @@ export default class JobRoleService{
     deleteRole(id){
         return axios.get(EnvironmentUrl.siteAddress()+"roles/delete?roleid="+id);
     }
+    getRoleById(id){
+        return axios.get(EnvironmentUrl.siteAddress()+"roles/getrolebyid?roleid="+id);
+    }
 }

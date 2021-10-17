@@ -78,12 +78,80 @@
   font-weight: bold;
 }
 .cvTitleFont{
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   color:rgb(72, 72, 184);
+}
+.cvBlackFont{
+  font-size: 15px;
+  font-weight: bold;
+  color:rgb(0, 0, 0);
 }
 .cvFullName {
   font-size: 20px;
   font-weight:bold;
   color: black;
+  display: inline-block;
+}
+.cvSchoolsListClass {
+  margin-top: 10px;
+  display: inline-block;
+}
+.marginLeft15 {
+  margin-left: 15px;
+}
+.cvSchoolsFont {
+  font-size: 16px;
+  font-weight: bold;
+}
+.marginRight5 {
+  margin-right: 5px;
+}
+.marginRight15 {
+  margin-right: 15px;
+}
+.cvSchoolsFontSchoolName{
+  font-size: 16px;
+  font-weight: bold;
+}
+.cvSchoolsFontDepartment{
+  font-size: 16px;
+  font-weight: bold;
+}
+.cvSchoolsFontDate{
+  font-size: 13px;
+  font-family: monospace;
+  color:gray;
+}
+.cvDetailNameFont{
+  font-size: 15px;
+  font-weight: bold;
+  color:rgb(72, 72, 184);
+  margin-top: 2px;
+}
+.userExperiencesJobRole {
+  color:grey;
+  font-size: 14px;
+  font-weight: bold;
+}
+.userProfileEditCSS {
+  position: absolute;
+  right: 15px;
+  font-size: 14px;
+  color:grey;
+  display: inline;
+  cursor:pointer;
+}
+.userProfileMiniCSS {
+  font-size: 14px;
+  color:grey;
+  display: inline;
+  cursor: pointer;
+  
+}
+.userExperiencesDateFont {
+  font-size: 13px;
+  font-family: monospace;
+  color:gray;
+  font-weight: normal;
 }
