@@ -46,7 +46,7 @@ setInterval(function () {
         localStorage.addItem("token", result.data.token);
         localStorage.addItem("expiration", dateMilliseconds);
         localStorage.addItem("type", result.data.userType);
-        toast.info("Tokeniniz yenilendi");
+        //toast.info("Tokeniniz yenilendi");
       } else {
         toast.error("Token yenilenirken bir hata ile karşılaştık");
       }

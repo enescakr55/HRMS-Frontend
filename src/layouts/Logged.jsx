@@ -1,12 +1,11 @@
-import React, { useEffect, useState,useHistory } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Dropdown, Grid, Icon } from "semantic-ui-react";
 import AuthService from "../services/authService";
 import LocalStorageService from "../services/localStorageService";
 import {
-  loginAccount,
   signOutAccount,
   updateLoginValue,
 } from "../store/actions/accountActions";
@@ -80,9 +79,9 @@ export default function Logged() {
               
               )}
               {userType === "employer" && (
-                <Dropdown.Item as={NavLink} to="/business-edit-profile">
+                <Dropdown.Item as={NavLink} to="/business">
                   <Icon name="edit" />
-                  <span className="text">Şirketi Düzenle</span>
+                  <span className="text">Şirketiniz</span>
                 </Dropdown.Item>
               )}
               {userType === "employer" && (

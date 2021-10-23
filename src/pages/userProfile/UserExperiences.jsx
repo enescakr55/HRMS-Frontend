@@ -46,7 +46,7 @@ export default function UserExperiences({ ...props }) {
           <div className="marginLeft15" style={{ display: "inline-block",position:"absolute",right:"15px" }}>
             <div className="cvSchoolsListClass">
               <font className="userExperiencesJobRole"><Icon color="black" name="calendar check"></Icon> <font className="userExperiencesDateFont">{r.startDate}  {r.endDate != null ? <font><Icon color="black" name="calendar minus"></Icon>{r.endDate}</font>  : <font><Icon color="black" name="calendar"></Icon>Devam ediyor</font>} </font></font>
-              {me != undefined && me.id == props.userId && <Popup content="Düzenle" position="right center" trigger={<Icon onClick={()=>deleteExperience(r)} name="trash" className="userProfileMiniCSS"></Icon>}></Popup>}
+              {me != undefined && me.id == props.userId && <Popup content="Sil" position="right center" trigger={<Icon onClick={()=>deleteExperience(r)} name="trash" className="userProfileMiniCSS"></Icon>}></Popup>}
             </div>
             
           </div>

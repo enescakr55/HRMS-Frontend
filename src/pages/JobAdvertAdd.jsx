@@ -72,6 +72,7 @@ export default function JobAdvertAdd() {
     jobTimeId: "",
     jobTypeId: "",
     lastDate: "",
+    closed:false,
   };
   let schema = Yup.object({
     maxSalary: Yup.number(),
@@ -93,6 +94,9 @@ export default function JobAdvertAdd() {
             result.data.success == true
               ? toast.success("İş ilanı eklendi")
               : toast.error("İş ilanı eklenemedi");
+          },error=>{
+            console.log(error);
+            toast.error("Bir hata oluştu");
           });
         }}
       >

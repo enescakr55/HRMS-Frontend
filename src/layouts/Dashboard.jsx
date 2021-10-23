@@ -1,5 +1,5 @@
 import React from "react";
-import {  Container, Grid } from "semantic-ui-react";
+import {   Grid } from "semantic-ui-react";
 import { ToastContainer } from "react-toastify";
 import Flow from "./Flow";
 import EmployerList from "../pages/EmployerList";
@@ -18,8 +18,6 @@ import SignUp from "../pages/SignUp";
 import JobseekerSignUpPage from "../pages/JobseekerSignUpPage";
 import FavoriteJobAdverts from "../pages/FavoriteJobAdverts";
 import MyJobAdverts from "../pages/MyJobAdverts";
-import UploadProfileImage from "../pages/UploadProfileImage";
-import BusinessProfileEdit from "../pages/BusinessProfileEdit";
 import AddJobAdvertByEmployer from "../pages/AddJobAdvertByEmployer";
 import AdvertDetails from "../pages/AdvertDetails";
 import UserProfile from "../pages/UserProfile";
@@ -28,13 +26,19 @@ import UserDescriptionEdit from "../pages/profileEdit/UserDescriptionEdit";
 import UserSchoolEdit from "../pages/profileEdit/UserSchoolEdit";
 import UserLanguageEdit from "../pages/profileEdit/UserLanguageEdit";
 import UserExperienceEdit from "../pages/profileEdit/UserExperienceEdit";
+import UserSocialEdit from "../pages/profileEdit/UserSocialEdit";
+import EmployerEdit from "../pages/profileEdit/EmployerEdit";
+import BusinessProfile from "../pages/BusinessProfile";
+import EmployerUpdateRequestApprove from "../pages/EmployerUpdateRequestApprove";
+import SendVerificationMail from "../pages/SendVerificationMail";
+import MailVerify from "../pages/MailVerify";
 export default function Dashboard() {
   const fulllocation = useLocation();
   //console.log(location.pathname);
   const location = fulllocation.pathname.split("/")[1];
   console.log(location);
-  const usersFlow = ["employers","jobseekers","","main","jobs","favorite-job-adverts","my-job-adverts","user-profile","user-profile-edit"];
-  const adminFlow = ["jobrolemanagement","jobadvertadd","jobadvertapprove"];
+  const usersFlow = ["employers","jobseekers","","main","jobs","favorite-job-adverts","my-job-adverts","user-profile","user-profile-edit","business-edit-profile","jobadvert-details","business"];
+  const adminFlow = ["jobrolemanagement","jobadvertadd","jobadvertapprove","employer-update-requests"];
   const usersFlowLength = usersFlow.filter(p=>p==location).length;
   const adminFlowLength = adminFlow.filter(p=>p==location).length;
   return (
@@ -66,7 +70,9 @@ export default function Dashboard() {
             <Route exact path="/jobseeker-sign-up"><JobseekerSignUpPage></JobseekerSignUpPage></Route>
             <Route exact path="/favorite-job-adverts"><FavoriteJobAdverts></FavoriteJobAdverts></Route>
             <Route exact path="/my-job-adverts"><MyJobAdverts></MyJobAdverts></Route>
-            <Route exact path="/business-edit-profile"><BusinessProfileEdit></BusinessProfileEdit></Route>
+            <Route exact path="/business"><BusinessProfile></BusinessProfile></Route>
+            <Route exact path="/employer-update-requests"><EmployerUpdateRequestApprove></EmployerUpdateRequestApprove></Route>
+            <Route exact path="/business-edit-profile"><EmployerEdit></EmployerEdit></Route>
             <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
             <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
             <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
@@ -75,6 +81,9 @@ export default function Dashboard() {
             <Route exact path="/user-profile-edit/school"><UserSchoolEdit></UserSchoolEdit></Route>
             <Route exact path="/user-profile-edit/language"><UserLanguageEdit></UserLanguageEdit></Route>
             <Route exact path="/user-profile-edit/experience"><UserExperienceEdit></UserExperienceEdit></Route>
+            <Route exact path="/user-profile-edit/social"><UserSocialEdit></UserSocialEdit></Route>
+            <Route exact path="/sendverificationmail"><SendVerificationMail></SendVerificationMail></Route>
+            <Route exact path="/verifymail/:code"><MailVerify></MailVerify></Route>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row only="mobile tablet">
@@ -94,7 +103,9 @@ export default function Dashboard() {
             <Route exact path="/jobseeker-sign-up"><JobseekerSignUpPage></JobseekerSignUpPage></Route>
             <Route exact path="/favorite-job-adverts"><FavoriteJobAdverts></FavoriteJobAdverts></Route>
             <Route exact path="/my-job-adverts"><MyJobAdverts></MyJobAdverts></Route>
-            <Route exact path="/business-edit-profile"><BusinessProfileEdit></BusinessProfileEdit></Route>
+            <Route exact path="/employer-update-requests"><EmployerUpdateRequestApprove></EmployerUpdateRequestApprove></Route>
+            <Route exact path="/business"><BusinessProfile></BusinessProfile></Route>
+            <Route exact path="/business-edit-profile"><EmployerEdit></EmployerEdit></Route>
             <Route exact path="/add-jobadvert-by-employer"><AddJobAdvertByEmployer></AddJobAdvertByEmployer></Route>
             <Route exact path="/jobadvert-details/:advertId"><AdvertDetails></AdvertDetails></Route>
             <Route exact path="/user-profile/:userId"><UserProfile></UserProfile></Route>
@@ -103,6 +114,9 @@ export default function Dashboard() {
             <Route exact path="/user-profile-edit/school"><UserSchoolEdit></UserSchoolEdit></Route>
             <Route exact path="/user-profile-edit/language"><UserLanguageEdit></UserLanguageEdit></Route>
             <Route exact path="/user-profile-edit/experience"><UserExperienceEdit></UserExperienceEdit></Route>
+            <Route exact path="/user-profile-edit/social"><UserSocialEdit></UserSocialEdit></Route>
+            <Route exact path="/sendverificationmail"><SendVerificationMail></SendVerificationMail></Route>
+            <Route exact path="/verifymail/:code"><MailVerify></MailVerify></Route>
           </Grid.Column>
         </Grid.Row>
       </Grid>

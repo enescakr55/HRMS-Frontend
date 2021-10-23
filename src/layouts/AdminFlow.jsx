@@ -67,10 +67,26 @@ export default class AdminFlow extends Component {
               active={activeItem === "/jobadvertapprove"}
               onClick={this.flowItemClick}
             >
-              <Icon name="angle right" size="big"></Icon>
+              <Icon name="tasks" size="big"></Icon>
             </Menu.Item>
           }
           content="Onay Bekleyen İlanlar"
+          position="right center"
+        />
+                <Popup
+          trigger={
+            <Menu.Item
+              
+              name="employer-update-request"
+              as={NavLink}
+              to="/employer-update-requests"
+              active={activeItem === "/employer-update-requests"}
+              onClick={this.flowItemClick}
+            >
+              <Icon size="big" name="pencil"></Icon>
+            </Menu.Item>
+          }
+          content="Onay Bekleyen Güncellemeler"
           position="right center"
         />
       </Menu>

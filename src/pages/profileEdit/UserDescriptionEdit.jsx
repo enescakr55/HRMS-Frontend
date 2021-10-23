@@ -6,6 +6,7 @@ import CvService from "../../services/cvService";
 import FrmTextInput from "../../utilities/customFormControls/FrmTextInput";
 import * as Yup from "yup";
 import FrmTextareaInput from "../../utilities/customFormControls/FrmTextareaInput";
+import { Button } from "semantic-ui-react";
 
 export default function UserDescriptionEdit() {
   const [currentUser, setCurrentUser] = useState([]);
@@ -43,9 +44,9 @@ export default function UserDescriptionEdit() {
       >
         <Form className="form ui">
           <label>Kullanıcı Açıklaması</label>
-          <FrmTextareaInput name="userdescription"></FrmTextareaInput>
+          <FrmTextareaInput name="userdescription"></FrmTextareaInput><br/>
           
-          <button type="submit">Açıklamayı Düzenle</button>
+          <Button type="submit">Açıklamayı Düzenle</Button>
         </Form>
       </Formik>}
     </div>

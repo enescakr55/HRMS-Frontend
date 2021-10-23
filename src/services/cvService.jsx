@@ -40,4 +40,10 @@ export default class CvService {
     getSocialsByUserId(userid){
         return axios.get(EnvironmentUrl.siteAddress()+"socials/getbyuserid?userid="+userid);
     }
+    addMySocial(social){
+        return axios.post(EnvironmentUrl.siteAddress()+"socials/addmysocial",social);
+    }
+    deleteMySocial(socialId){
+        return axios.get(EnvironmentUrl.siteAddress()+"socials/deletemysocial?socialid="+socialId);
+    }
 }

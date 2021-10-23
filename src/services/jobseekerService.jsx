@@ -10,4 +10,10 @@ export default class JobseekerService{
     getJobseekerByUserId(userId){
         return axios.get(EnvironmentUrl.siteAddress()+"jobseekers/getjobseekerbyuserid?userid="+userId);
     }
+    getAllJobseekerDetails(){
+        return axios.get(EnvironmentUrl.siteAddress()+"jobseekers/getalljobseekerdetails");
+    }
+    getJobseekerDetailsIfJobapply(jobAdvertId){
+        return axios.get(EnvironmentUrl.siteAddress()+"jobseekers/getjobseekerdetailsifjobapply?jobadvertid="+jobAdvertId)
+    }
 }

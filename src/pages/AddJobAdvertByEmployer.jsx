@@ -58,7 +58,8 @@ export default function AddJobAdvertByEmployer() {
     active: false,
     jobTimeId: "",
     jobTypeId: "",
-    lastDate:""
+    lastDate:"",
+    closed:false,
   };
   let schema = Yup.object({
     maxSalary: Yup.number(),

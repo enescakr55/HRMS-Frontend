@@ -30,6 +30,7 @@ export default function Main() {
 
                     </Grid.Column>
                     <Grid.Column>
+                        <div></div>
                     <Link to="/jobs"><div className="mainListDiv">
                             <Icon name="list alternate" size="massive"></Icon>
                             <br/>

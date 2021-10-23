@@ -13,4 +13,19 @@ export default class EmployerService {
     activeAccount(employer){
         return axios.post();
     }
+    me(){
+        return axios.get(EnvironmentUrl.siteAddress()+"employers/me");
+    }
+    update(pendingEmployer){
+        return axios.post(EnvironmentUrl.siteAddress()+"pendingemployers/update",pendingEmployer);
+    }
+    isPending(){
+        return axios.get(EnvironmentUrl.siteAddress()+"pendingemployers/ispending");
+    }
+    applyUpdateRequest(pendingEmployerId,isOk){
+        return axios.get(EnvironmentUrl.siteAddress()+"pendingemployers/applyupdaterequest?pendingemployerid="+pendingEmployerId+"&isok="+isOk);
+    }
+    getUpdateRequests(){
+        return axios.get(EnvironmentUrl.siteAddress()+"pendingemployers/getall");
+    }
 }

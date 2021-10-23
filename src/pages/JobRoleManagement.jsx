@@ -47,6 +47,8 @@ export default function JobRoleManagement() {
             p.data.success
               ? toast.success(p.data.message)
               : toast.error(p.data.message);
+          },error=>{
+            toast.error("Bir hata oluştu")
           });
         }}
       >

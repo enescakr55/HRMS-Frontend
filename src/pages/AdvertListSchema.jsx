@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/dom";
 import { setIn } from "formik";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -15,9 +16,12 @@ import {
   Label,
   Divider,
   Container,
+  Select,
 } from "semantic-ui-react";
+import CityService from "../services/cityService";
 import JobAdvertService from "../services/jobAdvertService";
 import JobApplyService from "../services/jobApplyService";
+import JobRoleService from "../services/jobRoleService";
 export default function AdvertListSchema({ ...props }) {
   console.log(props);
 
@@ -28,8 +32,23 @@ export default function AdvertListSchema({ ...props }) {
   const [activePage, setActivePage] = useState(1);
   const [perPageObject, setPerPageObject] = useState(10);
   const [favorites, setFavorites] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState(0)
   let jobAdvertService = new JobAdvertService();
-
+  let roleService = new JobRoleService();
+  let cityService = new CityService();
+  let date;
+  useEffect(() => {
+    roleService.getRoles().then(res => {
+      setRoles(res.data.data);
+    });
+  }, []);
+  useEffect(() => {
+    cityService.getAll().then((r) => {
+      setCities(r.data.data);
+    });
+  }, []);
   useEffect(() => {
     if (props.listType === "all") {
       var getDatas = jobAdvertService.getJobAdverts();
@@ -44,7 +63,7 @@ export default function AdvertListSchema({ ...props }) {
       getDatas.then((result) => {
         let xjobAdverts = new Array();
         for (let index = 0; index < result.data.data.length; index++) {
-        xjobAdverts[index] = result.data.data[index].jobAdvert;
+          xjobAdverts[index] = result.data.data[index].jobAdvert;
         }
         setJobadverts(xjobAdverts);
         setpageCount(Math.ceil(xjobAdverts.length / perPageObject));
@@ -52,6 +71,25 @@ export default function AdvertListSchema({ ...props }) {
       });
     }
   }, []);
+  useEffect(() => {
+    let results
+    if(props.listType != "all")
+      return;
+    let getData = jobAdvertService.getJobAdverts();
+    getData.then((result) => {
+      console.log("secilenrol");
+      console.log(selectedRole)
+      if(selectedRole != 0){
+        results = result.data.data.filter(p=>p.role.id == selectedRole)
+      }else{
+        results = result.data.data;
+      }
+      setJobadverts(results);
+      setpageCount(Math.ceil(results.length / perPageObject));
+      setfilteredJobAdverts(results.slice(0, perPageObject));
+      console.log(results);
+    });
+  },[selectedRole])
 
   function favGuncelle() {
     var fav = jobAdvertService.getFavorites();
@@ -90,9 +128,9 @@ export default function AdvertListSchema({ ...props }) {
     { key: 3, text: "50", value: 50 },
     { key: 4, text: "100", value: 100 },
   ];
-  function findPageCount() {
+  /*function findPageCount() {
     setpageCount(Math.ceil(jobadverts.length / perPageObject));
-  }
+  } */
   function perPageChange(p) {
     if (p == 10 || p == 20 || p == 50 || p == 100) {
       setPerPageObject(p);
@@ -117,12 +155,7 @@ export default function AdvertListSchema({ ...props }) {
       );
     }
   }
-  function filter() {}
-  function show() {
-    console.log(jobadverts);
-    console.log(activePage);
-    console.log(pageCount);
-  }
+
   function applyJob(jobAdvert) {
     let jobApplyService = new JobApplyService();
     jobApplyService.applyJob(jobAdvert).then(
@@ -138,11 +171,32 @@ export default function AdvertListSchema({ ...props }) {
       }
     );
   }
+  function filterRole(event){
+    console.log(event);
+    setSelectedRole(event);
+  }
   return (
     <div>
       <h2 style={{ borderBottom: "red 3px solid", color: "red" }}>
         İş İlanları
       </h2>
+      <div>
+        
+          
+          {props.listType == "all" && roles.length !== 0 && 
+          <div style={{textAlign:"center"}}>
+            <font style={{fontSize:"16px",color:"#ff0000",fontWeight:"bold"}}>Pozisyona Göre Filtrele</font><br/>
+          <select className="ui selection dropdown" name="roleFilter" value={selectedRole} onChange={(event)=>filterRole(event.target.value)}>
+          <option value={0} disabled >İlanları filtrelemek için bir pozisyon seçiniz</option>
+          <option value={0} >Filtre Yok</option>
+          {roles.map(r=>(
+           <option key={r.id} value={r.id}>{r.roleName}</option>
+          ))}
+          </select>
+          </div>
+          }
+        
+      </div>
       <Grid>
         <Grid.Row style={{ justifyContent: "center" }}>
           {filteredJobAdverts.map((j) => (
@@ -184,7 +238,7 @@ export default function AdvertListSchema({ ...props }) {
                 <strong>Açıklama : </strong>
                 {j.description}
               </p>
-              <p>
+              <p style={{ margin: "0px" }}>
                 {j.minSalary > 0 && j.maxSalary > 0 ? (
                   <font>
                     <strong>Maaş Aralığı : </strong>
@@ -210,6 +264,18 @@ export default function AdvertListSchema({ ...props }) {
                   ""
                 )}
               </p>
+              {j.lastDate != null && j.lastDate != undefined && (
+                <p>
+                  <strong>Son Başvuru : </strong>
+                  {
+                    <font>
+                      {new Date(j.lastDate).getDate()}.
+                      {new Date(j.lastDate).getMonth()}.
+                      {new Date(j.lastDate).getFullYear()}
+                    </font>
+                  }
+                </p>
+              )}
               <Label as="a" basic color="red">
                 {j.jobTime.jobTimeName}
               </Label>

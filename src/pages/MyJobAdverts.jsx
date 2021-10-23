@@ -24,7 +24,7 @@ export default function MyJobAdverts() {
     return (
         <div>
         <Grid>
-        <Grid.Row style={{ justifyContent: "center" }}>
+        { myJobAdverts != null && <Grid.Row style={{ justifyContent: "center" }}>
           {myJobAdverts.map((j) => (
             <div className="ListClass" key={j.advertId}>
               <h3 style={{ margin: "0px" }}>
@@ -54,13 +54,11 @@ export default function MyJobAdverts() {
               <Label as="a" basic color="green">
                 {j.jobType.jobTypeName}
               </Label><br/><br/>
-              <Button as={NavLink} to={"/jobadvert-details/"+j.advertId} size="small" color="blue">İlan Detayı </Button>
-                
-             
+              <Button as={NavLink} to={"/jobadvert-details/"+j.advertId} size="small" color="blue"> Başvurular </Button>
               <br></br>
             </div>
           ))}
-        </Grid.Row>
+        </Grid.Row> }
         </Grid>
         
         </div>
