@@ -22,8 +22,6 @@ Projeye ait BACKEND sistemi https://github.com/enescakr55/hrms adresindedir.
 - Eğer kullanılmak istenirse kullanıcıların  sisteme fotoğraf ekleyebilmesi altyapısı sistemde mevcuttur (Cloudinary üzerinden).
 - Eğer kullanılmak istenirse SMTP ile doğrulama maili gönderilmesinin altyapısı sistemde mevcuttur.
 
-**NOT : Site yapım aşamasındadır bazı özellikler stabil olmayabilir.**
-
 ### Eklenmesi Planlanan Özellikler
 
 - Sistem üzerinden iş ilanlarına başvurulması.
